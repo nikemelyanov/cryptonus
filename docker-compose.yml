@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  crypto_db:
+    container_name: crypto_db
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: crypto_db
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - "5439:5432"
+
+  crypto_pgadmin:
+    container_name: crypto_pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: emelyanov@mail.ru
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
